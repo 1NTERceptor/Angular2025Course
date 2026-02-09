@@ -16,3 +16,23 @@
         <td>{{user.email}}</td>
     </tbody>
 </table>
+
+
+<table>
+    <thead>
+        <th></th>
+        <th>Name</th>
+        <th>Surname</th>
+        <th>Role</th>
+        <th>Email</th>
+    </thead>
+    @for (user of users; track user; let i = $index) {
+        <tr>
+            <td>{{i}}</td>
+            <td>{{user.name}}</td>
+            <td>{{user.surname}}</td>
+            <td>{{user.role}}</td>
+            <td>{{user.email}}</td>
+        </tr>   
+    }
+</table>
