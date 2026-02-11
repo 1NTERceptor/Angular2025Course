@@ -1,38 +1,30 @@
-<p>users works!</p>
+<mat-form-field>
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. ium" #input>
+</mat-form-field>
 
-<table>
-    <thead>
-        <th></th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Role</th>
-        <th>Email</th>
-    </thead>
-    <tbody *ngFor="let user of users; let i = index">
-        <td>{{i}}</td>
-        <td>{{user.name}}</td>
-        <td>{{user.surname}}</td>
-        <td>{{user.role}}</td>
-        <td>{{user.email}}</td>
-    </tbody>
-</table>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Imię </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
 
-<table>
-    <thead>
-        <th></th>
-        <th>Name</th>
-        <th>Surname</th>
-        <th>Role</th>
-        <th>Email</th>
-    </thead>
-    @for (user of users; track user; let i = $index) {
-        <tr>
-            <td>{{i}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.surname}}</td>
-            <td>{{user.role}}</td>
-            <td>{{user.email}}</td>
-        </tr>   
-    }
+  <ng-container matColumnDef="surname">
+    <th mat-header-cell *matHeaderCellDef> Nazwisko </th>
+    <td mat-cell *matCellDef="let element"> {{element.surname}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef> Rola </th>
+    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="email">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>

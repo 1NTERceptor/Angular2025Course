@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserInterface } from '../interface/user.interface';
 import { RoleEnum } from '../enum/role.enum';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-users',
@@ -27,5 +28,13 @@ export class UsersComponent {
     role: RoleEnum.user,
     email: 'monika.kowalski@example.com'
   }
-]
+  ]
+
+  displayedColumns: string[] = ['name', 'surname', 'role', 'email'];
+  dataSource = new MatTableDataSource(this.users);
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
 }
