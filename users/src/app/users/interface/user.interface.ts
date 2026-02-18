@@ -5,4 +5,6 @@ export interface UserInterface {
     surname: string;
     role: RoleEnum;
     email: string;
+    startDate: string;
+    salary: number;
 }
